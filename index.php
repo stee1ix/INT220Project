@@ -13,6 +13,38 @@
 
 <body>
     <div class="container">
+        <form action="add.php" method="POST">
+            <div class="row">
+                <h3>TODO</h3>
+                <div class="">
+                    <input type="text" name="list" id="" class="form-control">
+                </div>
+                <div class="">
+                    <button type="submit" class="btn btn-primary">ADD</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- get list data -->
+        <?php 
+        include "db_config.php";
+        $data = mysqli_query($config, "SELECT * FROM todo");
+
+        ?>
+
+        <?php 
+        while ($item = mysqli_fetch_array($data)) {
+            
+        
+        ?>
+        <h5><?php echo $item['list'] ?></h5>
+        <a href="delete.php?id=<?php echo $item['id'] ?>" class="btn btn-danger">Delete</a>
+        <a href="" class="btn btn-success">Done</a>
+
+        <?php 
+        }
+        ?>
+
 
     </div>
 </body>
