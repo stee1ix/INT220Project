@@ -8,5 +8,4 @@ mysqli_query($config, "UPDATE `todo` SET `done`='1' WHERE id=$id");
 
 header("location:index.php");
 
-
 ?>
