@@ -29,23 +29,23 @@
         <?php 
         include "db_config.php";
         $data = mysqli_query($config, "SELECT * FROM todo");
-
         ?>
 
-        <?php 
-        while ($item = mysqli_fetch_array($data)) {
-            
-        
-        ?>
+        <?php while ($item = mysqli_fetch_array($data)) { ?>
+
+        <?php if ($item["done"]){ ?>
+        <s>
+            <h5><?php echo $item['list'] ?></h5>
+        </s>
+        <a href="" class="done disabled btn btn-secondary">Done</a>
+        <?php } else { ?>
         <h5><?php echo $item['list'] ?></h5>
+        <a href="update.php?id=<?php echo $item['id'] ?>" class="btn btn-success">Done</a>
+        <?php } ?>
+
         <a href="delete.php?id=<?php echo $item['id'] ?>" class="btn btn-danger">Delete</a>
-        <a href="" class="btn btn-success">Done</a>
 
-        <?php 
-        }
-        ?>
-
-
+        <?php } ?>
     </div>
 </body>
 
